@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌱 마음의 근육 키우기 — 소개</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#7C6FE0; --purple-dark:#5B4FD6; --purple-light:#F1EFFF;
+    --green:#16A34A; --green-light:#DCFCE7;
+    --yellow:#B45309; --yellow-light:#FEF3C7;
+    --pink:#DB2777; --pink-light:#FCE7F3;
+    --ink:#16181D; --ink-soft:#6B7280;
+    --bg:#F6F6FA; --card:#FFFFFF; --border:#ECECF2;
+    --shadow:0 4px 24px rgba(20,20,40,0.06);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans KR', sans-serif;
+    line-height:1.65;
+    word-break:keep-all;
+    padding-bottom:70px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{ max-width:820px; margin:0 auto; padding:0 20px; }
+
+  /* ---------- 히어로 ---------- */
+  .hero{
+    position:relative;
+    background:var(--purple-light);
+    border-radius:28px;
+    padding:56px 40px 64px;
+    margin:32px 20px 0;
+    max-width:820px;
+    margin-left:auto; margin-right:auto;
+    overflow:hidden;
+    text-align:center;
+  }
+  .hero-bubble{
+    position:absolute;
+    background:#FFFFFF;
+    border-radius:999px;
+    padding:8px 18px;
+    font-size:0.85rem;
+    font-weight:700;
+    box-shadow:var(--shadow);
+    color:var(--ink);
+  }
+  .hb1{ top:16%; left:2%; transform:rotate(-8deg); }
+  .hb2{ top:12%; right:3%; transform:rotate(7deg); }
+  .hb3{ bottom:6%; left:3%; transform:rotate(6deg); }
+  .hb4{ bottom:6%; right:4%; transform:rotate(-6deg); }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink);
+    color:#FFFFFF;
+    font-size:0.85rem;
+    font-weight:700;
+    padding:7px 18px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:var(--green); }
+
+  .hero h1{
+    font-size:2.1rem;
+    font-weight:900;
+    line-height:1.5;
+  }
+  .hero h1 .hl{ color:var(--purple-dark); }
+  .hero p.lead{
+    max-width:480px;
+    margin:22px auto 0;
+    font-size:1rem;
+    color:#3D3D46;
+    font-weight:500;
+  }
+
+  /* ---------- 패들렛 버튼 ---------- */
+  .padlet-wrap{ text-align:center; margin:26px 0; }
+  .padlet-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--card);
+    color:var(--ink);
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.95rem;
+    padding:14px 28px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .padlet-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 28px rgba(20,20,40,0.10); }
+
+  /* ---------- 탭 ---------- */
+  nav.tabs{
+    display:flex; gap:8px;
+    max-width:820px; margin:0 auto 36px; padding:0 20px;
+    flex-wrap:wrap; justify-content:center;
+  }
+  .tab-btn{
+    font-family:inherit; font-weight:700; font-size:0.95rem;
+    background:var(--card);
+    color:var(--ink-soft);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:12px 24px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    transition:transform .12s ease, background .15s ease, color .15s ease;
+  }
+  .tab-btn:hover{ transform:translateY(-2px); }
+  .tab-btn.active{ background:var(--ink); color:#FFFFFF; }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+
+  /* ---------- 섹션 헤더 ---------- */
+  .section-tag{ display:flex; align-items:center; gap:12px; margin:44px 0 20px; }
+  .section-tag .badge{
+    width:40px; height:40px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+    box-shadow:var(--shadow);
+  }
+  .section-tag h2{ font-size:1.35rem; font-weight:900; }
+  .b-purple{ background:var(--purple-light); }
+  .b-green{ background:var(--green-light); }
+  .b-yellow{ background:var(--yellow-light); }
+
+  /* ---------- 카드 ---------- */
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:28px 30px;
+    margin-bottom:18px;
+  }
+  .card h3{ font-size:1.05rem; font-weight:900; margin-bottom:16px; }
+
+  /* ---------- 클릭 인터랙션 리스트 ---------- */
+  .click-list{ list-style:none; display:flex; flex-direction:column; gap:6px; }
+  .click-list li{
+    position:relative;
+    padding:12px 16px 12px 40px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:0.96rem;
+    transition:background .15s ease;
+  }
+  .click-list li:hover{ background:#FAFAFC; }
+  .click-list li::before{
+    content:'';
+    position:absolute; left:12px; top:16px;
+    width:16px; height:16px;
+    border-radius:6px;
+    border:2px solid var(--border);
+    background:#FFFFFF;
+    transition:all .15s ease;
+  }
+  .click-list li.on{ background:var(--purple-light); }
+  .click-list li.on::before{
+    background:var(--purple);
+    border-color:var(--purple);
+    content:'✓';
+    color:#fff;
+    font-size:11px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900;
+  }
+  .kw{ font-weight:500; transition:color .15s ease, font-weight .15s ease; }
+  .click-list li.on .kw{ color:var(--purple-dark); font-weight:800; }
+
+  .hint{ font-size:0.8rem; color:var(--ink-soft); margin:-6px 0 16px; }
+
+  /* ---------- 근육 그리드 ---------- */
+  .muscle-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:600px){ .muscle-grid{ grid-template-columns:1fr; } }
+
+  @media (max-width:480px){
+    .hero-bubble{ display:none; }
+    .hero{ padding:44px 24px 40px; }
+    .hero h1{ font-size:1.7rem; }
+  }
+  .muscle-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .muscle-card:hover{ transform:translateY(-2px); }
+  .muscle-card.on{ border-color:var(--purple); background:var(--purple-light); }
+  .muscle-card .name{ font-weight:900; font-size:1rem; margin-bottom:8px; }
+  .muscle-card .ability{
+    display:inline-block;
+    font-size:0.72rem; font-weight:700;
+    padding:3px 12px; border-radius:999px;
+    margin-bottom:10px;
+  }
+  .muscle-card .desc{ font-size:0.86rem; color:var(--ink-soft); }
+  .muscle-card.on .desc{ color:#3D3D46; }
+  .tag-purple{ background:var(--purple-light); color:var(--purple-dark); }
+  .tag-green{ background:var(--green-light); color:var(--green); }
+  .tag-yellow{ background:var(--yellow-light); color:var(--yellow); }
+  .tag-pink{ background:var(--pink-light); color:var(--pink); }
+
+  /* ---------- 경고/이벤트 ---------- */
+  .warn-box{
+    background:var(--yellow-light);
+    border-radius:16px;
+    padding:16px 20px;
+    margin:14px 0;
+    font-size:0.92rem;
+  }
+  .event-box{
+    background:var(--ink);
+    color:#FFFFFF;
+    border-radius:20px;
+    padding:24px;
+    margin:16px 0;
+    text-align:center;
+    font-size:0.92rem;
+  }
+
+  .pw-chip{
+    display:inline-block;
+    background:var(--purple-light);
+    color:var(--purple-dark);
+    border-radius:10px;
+    padding:3px 16px;
+    font-weight:900;
+    font-size:1.05rem;
+  }
+
+  /* ---------- 참고자료 스텝 ---------- */
+  .justify-p{ text-align:justify; font-size:0.96rem; color:#3D3D46; }
+  .step-list{ display:flex; flex-direction:column; gap:14px; margin-bottom:24px; }
+  .step-item{
+    display:flex; gap:18px; align-items:flex-start;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:20px 24px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .step-item:hover{ background:#FAFAFC; }
+  .step-num{
+    flex-shrink:0; width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:0.95rem;
+    background:var(--purple-light); color:var(--purple-dark);
+    transition:all .15s ease;
+  }
+  .step-item.done{ background:var(--green-light); }
+  .step-item.done .step-num{ background:var(--green); color:#fff; }
+  .step-title{ font-weight:900; font-size:0.98rem; margin-bottom:6px; }
+  .step-desc{ font-size:0.88rem; color:var(--ink-soft); text-align:justify; }
+
+  .ref-card{ background:#FAFAFB; }
+
+  /* ---------- CTA ---------- */
+  .cta-box{
+    background:var(--ink);
+    color:#FFFFFF;
+    border-radius:24px;
+    padding:40px 32px;
+    text-align:center;
+    margin-top:24px;
+  }
+  .cta-box h2{ font-size:1.3rem; font-weight:900; margin-bottom:10px; }
+  .cta-box p{ color:#C9C9D1; margin-bottom:22px; font-size:0.92rem; }
+  .cta-btn{
+    display:inline-block;
+    background:#FFFFFF;
+    color:var(--ink);
+    text-decoration:none;
+    font-weight:900;
+    font-size:1.05rem;
+    padding:16px 40px;
+    border-radius:999px;
+    transition:transform .15s ease;
+  }
+  .cta-btn:hover{ transform:translateY(-2px); }
+  .cta-note{ margin-top:16px; font-size:0.8rem; color:#9A9AA5; }
+
+  footer{ text-align:center; color:var(--ink-soft); font-size:0.82rem; padding:30px 20px 0; }
+
+  [hidden]{ display:none !important; }
+
+  /* ---------- 근육 설명 이미지 팝업 ---------- */
+  .muscle-modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(20,20,30,0.55);
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    z-index:100;
+  }
+  .muscle-modal-box{
+    position:relative;
+    max-width:480px; width:100%;
+    max-height:90vh;
+    background:#FFFFFF;
+    border-radius:20px;
+    padding:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+    overflow:auto;
+  }
+  .muscle-modal-box img{
+    display:block;
+    width:100%;
+    border-radius:12px;
+  }
+  .muscle-modal-close{
+    position:absolute;
+    top:-14px; right:-14px;
+    width:36px; height:36px;
+    border-radius:50%;
+    background:#111;
+    color:#fff;
+    border:3px solid #fff;
+    font-size:1.1rem;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <span class="hero-bubble hb1">🦁 당당사자</span>
+    <span class="hero-bubble hb2">🦉 지혜부엉</span>
+    <span class="hero-bubble hb3">🐰 용기토끼</span>
+    <span class="hero-bubble hb4">🐨 여유코알라</span>
+    <div class="eyebrow"><span class="dot"></span>약물오남용 예방교육</div>
+    <h1>나를 안전하게 지켜줄,<br><span class="hl">마음의 근육</span> 키우기</h1>
+    <p class="lead">운동을 하면 몸의 근육이 생기듯, 해로운 중독과 약물 오남용의 유혹으로부터 나를 안전하게 지켜주는 마음의 근육은 누구에게나 있고 단련할 수 있어요. 순간의 흔들림 속에서도 나를 조절할 수 있는 내 안의 단단한 마음의 근육을 함께 찾고, 실제 유혹 상황에서 그 근육 사용을 연습해보는 활동입니다.</p>
+  </div>
+
+  <div class="padlet-wrap">
+    <a class="padlet-btn" href="https://padlet.com/ilovewisdom/padlet-tigdbykvjgslfjcg" target="_blank" rel="noopener">📌 마음의 근육 키우기 패들렛 바로가기</a>
+  </div>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="tabDiagnosis">🧭 자가진단</button>
+    <button class="tab-btn" data-tab="tabPractice">🃏 수업으로의 확장</button>
+    <button class="tab-btn" data-tab="tabRef">📎 참고자료</button>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- ============ 탭 1: 자가진단 ============ -->
+    <section id="tabDiagnosis" class="tab-panel active">
+      <div class="section-tag"><span class="badge b-purple">🧭</span><h2>마음의 근육 진단하기</h2></div>
+
+      <div class="card">
+        <h3>어떤 기능이 있을까?</h3>
+        <p class="hint">👆 눌러보면 핵심 내용이 표시돼요</p>
+        <ul class="click-list">
+          <li>위험 강조에서 <span class="kw">강점 발견</span>으로, 나에게도 나를 지킬 힘이 있다는 인식 형성</li>
+          <li>10가지 마음의 근육에 대한 <span class="kw">자가진단</span></li>
+          <li>응답 결과로 본인에게 가장 강하게 작동하는 <span class="kw">상위 3개 근육</span> 도출</li>
+          <li>근육별 특징, 점검사항, 조언, 상호보완관계에 있는 <span class="kw">추천 마음 근육</span> 안내</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>10가지 마음의 근육</h3>
+        <p class="hint">👆 카드를 눌러보세요</p>
+        <div class="muscle-grid">
+          <div class="muscle-card" data-img="탐구냥-호기심조절력.png"><div class="name">🐱 탐구냥</div><div class="ability tag-purple">호기심 조절력</div><div class="desc">약물을 처음 접하는 주요 계기는 단순한 호기심. 직접 시도하는 대신 확인하는 습관으로 대응</div></div>
+          <div class="muscle-card" data-img="당당사자-또래거절력.png"><div class="name">🦁 당당사자</div><div class="ability tag-green">또래 거절력</div><div class="desc">또래의 권유는 최초 사용의 주된 경로. 관계를 해치지 않으면서 거절하는 힘</div></div>
+          <div class="muscle-card" data-img="여유코알라-스트레스해소력.png"><div class="name">🐨 여유코알라</div><div class="ability tag-yellow">스트레스 해소력</div><div class="desc">스트레스를 피하려고 약물에 손대는 경우도 많음. 건강한 대체 해소법 확보</div></div>
+          <div class="muscle-card" data-img="똑똑다람쥐-카페인각성제_절제력.png"><div class="name">🐿️ 똑똑다람쥐</div><div class="ability tag-pink">카페인·각성제 절제력</div><div class="desc">카페인 의존은 심각한 수준. 카페인 없이 맑은 정신을 유지하는 능력</div></div>
+          <div class="muscle-card" data-img="다정멍멍-가족신뢰관계소통력.png"><div class="name">🐶 다정멍멍</div><div class="ability tag-purple">가족·신뢰관계 소통력</div><div class="desc">신뢰관계가 없으면 위험행동이 늘어남. 중독으로 빠지기 전 골든타임을 지키는 능력</div></div>
+          <div class="muscle-card" data-img="포근판다-수면컨디션_관리력.png"><div class="name">🐼 포근판다</div><div class="ability tag-green">수면·컨디션 관리력</div><div class="desc">수면 부족은 각성제 의존 악순환을 만듦. 건강한 생활 패턴을 유지하는 능력</div></div>
+          <div class="muscle-card" data-img="꾸준거북-성과압박_대응력.png"><div class="name">🐢 꾸준거북</div><div class="ability tag-yellow">성과압박 대응력</div><div class="desc">외모·성적 압박은 오남용으로 이어질 수 있음. 빠른 효과보다 건강한 노력을 선택</div></div>
+          <div class="muscle-card" data-img="똑똑펭귄-미디어분별력.png"><div class="name">🐧 똑똑펭귄</div><div class="ability tag-pink">미디어 분별력</div><div class="desc">온라인 속 약물 허위 광고가 넘쳐남. 거짓 정보의 숨은 의미를 판별하는 능력</div></div>
+          <div class="muscle-card" data-img="지혜부엉-정확한_위험_인지력.png"><div class="name">🦉 지혜부엉</div><div class="ability tag-purple">정확한 위험 인지력</div><div class="desc">왜곡된 정보가 비법처럼 퍼지는 경우가 많음. 소문 대신 사실에 근거해 판단하는 능력</div></div>
+          <div class="muscle-card" data-img="용기토끼-도움요청력.png"><div class="name">🐰 용기토끼</div><div class="ability tag-green">도움요청력</div><div class="desc">처벌보다 상담·치료가 회복에 도움이 됨. 숨기지 않고 도움을 요청하는 능력</div></div>
+        </div>
+      </div>
+
+      <div class="event-box">
+        🎁 마음의 근육 진단하기 참여 후 결과화면을 이미지로 저장해서 <b>패들렛에 업로드</b>해주시면 소정의 상품을 드려요.
+      </div>
+    </section>
+
+    <!-- ============ 탭 2: 수업으로의 확장 ============ -->
+    <section id="tabPractice" class="tab-panel">
+      <div class="card" style="border:2px solid var(--yellow); background:var(--yellow-light);">
+        <h3>⚠️ 체험 전 약속해주세요</h3>
+        <p class="hint">👆 눌러보면 핵심 내용이 표시돼요</p>
+        <ul class="click-list">
+          <li>입장 후에는 입력된 내용을 <span class="kw">삭제</span>, <span class="kw">추가</span>, <span class="kw">수정</span>하지 말아주세요</li>
+          <li><span class="kw">제출하기</span>도 누르지 말아주세요</li>
+          <li>함께 체험하는 예시 데이터입니다</li>
+          <li>인터넷 환경에 따라 예시 데이터를 불러오는 데 시간이 조금 걸릴 수 있어요</li>
+        </ul>
+      </div>
+
+      <div class="section-tag"><span class="badge b-green">🃏</span><h2>마음의 근육 연습하기</h2></div>
+
+      <div class="card">
+        <p class="hint">👆 눌러보면 핵심 내용이 표시돼요</p>
+        <ul class="click-list">
+          <li>자가진단에서 찾은 내 마음의 근육을 <span class="kw">실제 상황에 적용</span>해보는 활동</li>
+          <li><span class="kw">근육사전</span>에서 가장 강한 근육 1개 선택</li>
+          <li><span class="kw">상황카드연습</span>에서 이겨낼 수 있는 상황 2개와 흔들리는 상황 2개를 골라 대응법 직접 서술</li>
+          <li><span class="kw">근육 사용 선언</span>에서 흔들리는 순간의 나에게 짧은 글 남기기</li>
+          <li>제출 후 <span class="kw">친구들 이야기</span>에서 다른 친구들의 대응을 익명으로 확인, <span class="kw">내 활동 보기</span>에서 전체 내용을 발표 화면처럼 정리</li>
+          <li>정답을 맞히는 활동이 아니므로 완벽하게 쓰지 않아도 되고, <span class="kw">제출 후에도 다시 수정 가능</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>예시 데이터로 먼저 체험해보기</h3>
+        <p class="hint">👆 눌러보면 핵심 내용이 표시돼요</p>
+        <ul class="click-list">
+          <li><span class="kw">박보건, 김보건, 이보건, 정보건, 최보건</span> 중 원하는 이름 하나를 골라 검색한 뒤 입장</li>
+          <li><b>근육사전</b>: 자가진단으로 찾은 나의 가장 강한 근육을 선택하고, 10가지 근육 전체의 특징을 살펴봄</li>
+          <li><b>상황카드연습</b>: 이겨낼 수 있는 상황 2개, 흔들릴 수 있는 상황 2개를 골라 직접 대응법을 써보는 활동
+            <div style="margin-top:8px; font-size:0.86rem; color:var(--ink-soft);">10가지 상황: 전자담배 권유, 음주 권유, 숏폼 콘텐츠 과몰입, 고카페인 음료 과다 섭취, ADHD 약물 공유, 미인증 보조제 광고, 불안 회피용 미디어 의존, SNS 반응 과몰입, 심야 게임 과몰입, 마약류에 대한 왜곡된 인식</div>
+          </li>
+          <li><b>근육사용선언</b>: 흔들리는 순간의 나에게 편지를 쓰고 편지지나 포스트잇 이미지로 저장</li>
+          <li><b>친구들이야기</b>: 같은 상황에서 다른 예시 학생들은 어떤 근육을 썼는지 익명으로 확인</li>
+          <li><b>내활동보기</b>: 제출한 내용을 발표 화면처럼 정리해서 확인</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>관리자 페이지도 체험해보기</h3>
+        <p class="hint">👆 눌러보면 핵심 내용이 표시돼요</p>
+        <ul class="click-list">
+          <li>홈 화면 맨 아래쪽 중앙에 작은 글씨로 있는 <span class="kw">"교사용 관리자 페이지"</span> 클릭</li>
+          <li>체험 비밀번호: <span class="pw-chip">119</span></li>
+          <li><span class="kw">반별제출현황</span>(누가·언제 제출했는지), <span class="kw">명렬표관리</span>(학년·반·번호·이름 등록·수정), <span class="kw">학생별활동보기</span>(개인별 발표 화면 활용), <span class="kw">상황별조회</span>(하나의 상황에 대한 반 전체 답변 모아보기)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 탭 3: 참고자료 ============ -->
+    <section id="tabRef" class="tab-panel">
+      <div class="section-tag"><span class="badge b-yellow">📎</span><h2>우리 반에 가져가는 방법</h2></div>
+
+      <p class="justify-p" style="margin-bottom:16px;">코딩 지식 없이, 구글 계정만 있으면 그대로 가져다 쓸 수 있어요. 아래 순서대로 진행하시면 돼요. (항목을 누르면 완료 표시가 돼요)</p>
+
+      <div class="step-list">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-title">구글시트 사본 만들기</div><div class="step-desc">참고자료 탭 아래 "사본 만들기" 버튼을 눌러 접속한 뒤, 화면에 뜨는 "사본 만들기" 버튼을 클릭해요. 원본은 그대로 두고 내 드라이브에 명렬표·제출데이터 시트와 코드가 통째로 복사돼요.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Apps Script 열기</div><div class="step-desc">복사된 구글시트 상단 메뉴에서 "확장 프로그램 → Apps Script"를 클릭해요.</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-title">웹 앱으로 배포</div><div class="step-desc">배포 → 새 배포 → 유형에서 "웹 앱" 선택 → 액세스 권한을 "모든 사용자"로 설정 → 배포를 눌러요. 처음 배포할 때 권한 승인 화면이 뜨면 모두 허용해주세요. 발급된 웹앱 URL을 복사해두면, 이 주소가 학생들이 접속할 홈 화면 주소가 돼요. (웹앱 URL은 나중에 배포 → 배포 관리에서 다시 확인할 수 있어요)</div></div></div>
+        <div class="step-item"><div class="step-num">4</div><div><div class="step-title">확인해보기 (기능 테스트)</div><div class="step-desc">발급된 웹앱 URL로 들어가서, 이 페이지 자가진단·수업으로의 확장 탭에서 안내한 예시 데이터(박보건 등)로 먼저 기능을 하나씩 눌러봐요.</div></div></div>
+        <div class="step-item"><div class="step-num">5</div><div><div class="step-title">명렬표 채우기</div><div class="step-desc">테스트가 끝나면 예시 데이터를 실제 학생 명단으로 교체해요. 학년·반·번호·이름만 입력하면 학번은 수식으로 자동 생성돼요.</div></div></div>
+        <div class="step-item"><div class="step-num">6</div><div><div class="step-title">관리자 비밀번호 설정</div><div class="step-desc">구글시트 상단 메뉴 "마음근육 관리 → 관리자 비밀번호 설정"에서 원하는 비밀번호를 새로 정해요.</div></div></div>
+        <div class="step-item"><div class="step-num">7</div><div><div class="step-title">다시 재확인해보기</div><div class="step-desc">실제 학생 이름으로 조회가 잘 되는지, 관리자 페이지에 새 비밀번호로 로그인되는지 최종 확인해요.</div></div></div>
+      </div>
+
+      <div class="warn-box">💡 코드를 수정한 뒤에는 저장만으로는 반영되지 않아요. <b>배포 → 배포 관리 → 새 버전으로 배포</b>를 다시 눌러야 실제 주소에 반영돼요.</div>
+      <div class="warn-box">💡 실제 학생 명단을 넣기 전에, 구글시트에 남아있는 예시 데이터(박보건~최보건)는 지워주시는 걸 추천드려요.</div>
+
+      <div class="cta-box">
+        <h2>📋 구글시트 사본 만들기</h2>
+        <p>버튼을 누르면 원본은 그대로 두고, 내 드라이브에 명렬표·제출데이터 시트와 코드가 통째로 복사돼요.</p>
+        <a class="cta-btn" href="https://docs.google.com/spreadsheets/d/1R9bGwLBwOL3VFA8fbuy6FVknQzO7KLS8FPynGNyNOuI/copy" target="_blank" rel="noopener">사본 만들기 →</a>
+        <div class="cta-note">사본을 만든 뒤에는 위 순서대로 배포를 진행해주세요.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>Drug Compass · 마음의 근육 워크시트</footer>
+
+  <div id="muscleModal" class="muscle-modal-overlay" hidden>
+    <div class="muscle-modal-box">
+      <button class="muscle-modal-close" aria-label="닫기">×</button>
+      <img id="muscleModalImg" src="" alt="마음의 근육 설명 카드">
+    </div>
+  </div>
+
+<script>
+  // 탭 전환
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // 클릭하면 핵심 단어 강조 토글
+  document.querySelectorAll('.click-list li').forEach(function(li){
+    li.addEventListener('click', function(){
+      li.classList.toggle('on');
+    });
+  });
+
+  // 근육 카드 클릭 → 설명 이미지 팝업
+  var muscleModal = document.getElementById('muscleModal');
+  var muscleModalImg = document.getElementById('muscleModalImg');
+
+  document.querySelectorAll('.muscle-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var src = card.dataset.img;
+      if(!src) return;
+      muscleModalImg.src = './' + encodeURIComponent(src);
+      muscleModal.hidden = false;
+    });
+  });
+  document.querySelector('.muscle-modal-close').addEventListener('click', function(){
+    muscleModal.hidden = true;
+  });
+  muscleModal.addEventListener('click', function(e){
+    if(e.target === muscleModal) muscleModal.hidden = true;
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') muscleModal.hidden = true;
+  });
+
+  // 참고자료 단계 클릭 시 완료 표시 토글
+  document.querySelectorAll('.step-item').forEach(function(step){
+    step.addEventListener('click', function(){
+      step.classList.toggle('done');
+    });
+  });
+</script>
+
+</body>
+</html>
